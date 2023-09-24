@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>codsoft calculator</title>
+
+<p> codsoft calculator</p>
+    <style>
+        .calculator{
+            display: grid;
+            grid-template-areas: "display"
+            "button";
+            grid-template-rows: 1fr auto;
+            width: 90px;
+            margin: 0 auto;
+
+        }
+        .display{
+            grid-area: display;
+            padding: 10px;
+        }
+        .buttons{
+            grid-area: button;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 5px;        }
+  
+  button{
+    padding: 10px;
+    font-size: 18px;
+  }
+  </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <div class="display">
+            <input type="text" id="result" value="">
+        </div>
+        <div class="buttons">
+            <button onclick="clearDisplay()">c</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('+')">+</button>
+            <button onclick="appendToDisplay('-')">-</button>
+            <button onclick="appendToDisplay('*')">*</button>
+            <button onclick="appendToDisplay('/')">/</button>
+            <button onclick="appendToDisplay('%')">%</button>
+            <button onclick="appendToDisplay('.')">.</button>
+
+            <button onclick="calculate()">=</button>
+            
+            
+        </div>
+        
+    </div>
+    <script>
+            let display=document.getElementById("result");
+            let currentInput= "";
+            function appendToDisplay(value) {
+                currentInput+=value;
+                display.value=currentInput;
+            }
+            
+            function clearDisplay(){
+                currentInput="";
+                display.value="";
+                             }
+                             
+               function calculate(){
+                  try {
+                    currentInput=eval(currentInput);
+                    display.value=currentInput;
+
+               }
+                  catch(error){
+                display.value="error";
+                } }</script>
+</body>
+</html>
